@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ScanForm from "./components/ScanForm";
+import ScanResults from "./components/ScanResults";
 
 function App() {
+  const [scanResults, setScanResults] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>ZapScan: Web Vulnerability Scanner</h1>
+      <ScanForm onScanComplete={setScanResults} />
+      {scanResults && <ScanResults results={scanResults} />}
     </div>
   );
 }
