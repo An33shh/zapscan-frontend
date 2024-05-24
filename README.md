@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# ZapScan: A Web Vulnerability Scanner 🕷️🔍
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ZapScan is a powerful web vulnerability scanner built with [FastAPI](https://fastapi.tiangolo.com/) and [OWASP ZAP](https://www.zaproxy.org/). It automates the process of identifying common security vulnerabilities in web applications, helping developers and security professionals safeguard their websites against potential threats.
 
-## Available Scripts
+## Key Features 🚀
 
-In the project directory, you can run:
+- **Automated Scanning:** Easily scan any website for common vulnerabilities.
+- **OWASP Top 10 Coverage:** Identifies a wide range of vulnerabilities listed in the [OWASP Top 10](https://owasp.org/www-project-top-ten/).
+- **Detailed Reports:** Get comprehensive scan reports with vulnerability details, risk assessments, and recommended solutions.
+- **FastAPI Backend:** Leveraging FastAPI's performance, scalability, and ease of development.
+- **React Frontend:** An intuitive user interface for initiating scans and viewing results (work in progress).
 
-### `npm start`
+## Installation 🛠️
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Prerequisites:**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Python 3.7+
+- Node.js and npm (for the React frontend)
+- OWASP ZAP (running in daemon mode)
 
-### `npm test`
+**Steps:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the Repository:**
 
-### `npm run build`
+   ```bash
+   git clone <repository_url>
+   cd ZapScan
+2. **Backend(FastAPI):**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   cd zapscan-env 
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+3. **Frontend(FastAPI)**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd zapscan-frontend
+   npm install
+4. **Configuration:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Open zapscan-env/config.py and replace YOUR_API_KEY with your actual ZAP API 
+   key.
+## Usage 🖥️
 
-### `npm run eject`
+1.  **Start OWASP ZAP Daemon:**
+    -   Follow the instructions in the [OWASP ZAP documentation](https://www.zaproxy.org/docs/docker/about/) to start ZAP in daemon mode.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2.  **Start Backend Server:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    uvicorn app.main:app --reload  # From the root of zapscan-env directory
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3.  **Start Frontend (Optional):**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    cd zapscan-frontend
+    npm start  
+    ```
 
-## Learn More
+4.  **Access the Scanner:**
+    -   Open your browser and navigate to `http://localhost:8000` (or the appropriate port).
+    -   If you have set up the react frontend, open the browser to `http://localhost:3000`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing 🤝
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! Please feel free to submit issues, bug reports, or pull requests to improve ZapScan.
 
-### Code Splitting
+## License 📄
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project is licensed under the MIT License.
 
-### Analyzing the Bundle Size
+## Disclaimer ⚠️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ZapScan is intended for educational and testing purposes only. Use it responsibly and always obtain proper authorization before scanning any website.
